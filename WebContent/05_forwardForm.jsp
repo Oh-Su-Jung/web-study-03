@@ -5,6 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>성인만 가능</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".btn").click(function(){
+			if($(".input_text").val() <= 19){
+				alert("19세 미만입니다. 되돌아가!!!!")
+				return false;
+			} else {
+				return true;
+			}
+		})
+	})
+</script>
 <style>
 	@font-face {font-family: 'S-CoreDream-4Regular'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); font-weight: normal; font-style: normal;}
             
@@ -18,7 +31,7 @@
 	<h1>입장하려면 나이를 입력하세요.</h1>
 	<form action="forwardServlet">
 		<input type="text" name="age" class="input_text">
-		<input type="submit" value="입장">
+		<input type="submit" value="입장" class="btn">
 	</form>
 </body>
 </html>

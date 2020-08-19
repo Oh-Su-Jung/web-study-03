@@ -1,6 +1,8 @@
 package web_study_03;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,16 +25,31 @@ public class forwardServlet extends HttpServlet {
 	}
 
 	private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*response.setContentType("text/html; charset=UTF-8");
 		int age = Integer.parseInt(request.getParameter("age"));
+		RequestDispatcher dispatcher = null;
 		if (age <= 19) {
-			JOptionPane.showMessageDialog(null, "19세 미만으로 입장 불가능");
+			PrintWriter out = response.getWriter();
+			out.print("<script>alert('성인이 아닙니다. 되돌아가세요')</script>");
+			
+			dispatcher = request.getRequestDispatcher("05_forwardForm.jsp");
 		} else {
 			request.setAttribute("age", age);
 			request.setAttribute("name", "성윤정");
 		
-			RequestDispatcher dispatcher = request.getRequestDispatcher("05_forwardResult.jsp");
-			dispatcher.forward(request, response);
+			dispatcher = request.getRequestDispatcher("05_forwardResult.jsp");
+			
 		}
+		dispatcher.forward(request, response);*/
+		
+		response.setContentType("text/html; charset=UTF-8");
+		int age = Integer.parseInt(request.getParameter("age"));
+		
+		request.setAttribute("age", age);
+		request.setAttribute("name", "성윤정");
+	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("05_forwardResult.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }
